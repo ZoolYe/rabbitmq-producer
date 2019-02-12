@@ -1,0 +1,31 @@
+server:
+  port: 12018
+spring:
+  rabbitmq:
+    addresses: localhost:5672
+    username: zoolye
+    password: 123456
+    virtual-host: /zool
+    connection-timeout: 15000
+    publisher-confirms: true
+  http:
+    encoding:
+      charset: UTF-8
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: NON_NULL
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&autoReconnect=true
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+mybatis:
+  type-aliases-package: zool.rabbitmq.producer
+  mapper-locations: classpath:zool/rabbitmq/producer/mapping/*.xml
+
+logging:
+  level:
+    tk:
+      mybatis: TRACE
